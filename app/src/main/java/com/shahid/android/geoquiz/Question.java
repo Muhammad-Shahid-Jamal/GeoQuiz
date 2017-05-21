@@ -14,10 +14,10 @@ public class Question {
     }
 
     public int getmTextResId() {
-        return mTextResId;
+        return this.mTextResId;
     }
 
     public boolean ismAnsTrue() {
-        return mAnsTrue;
+        return this.mAnsTrue;
     }
 }
