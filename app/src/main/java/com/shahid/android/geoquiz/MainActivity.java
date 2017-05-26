@@ -37,24 +37,21 @@ public class MainActivity extends AppCompatActivity {
         mTrueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,R.string.correct_toast,Toast.LENGTH_LONG).show();
+                checkAnswer(true);
             }
         });
 
         mFalseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,R.string.incorrect_toast,Toast.LENGTH_LONG).show();
+                checkAnswer(false);
             }
         });
 
         mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("before Module :" , ""+mQuestionBank.length);
                 indexOfQuestion = (indexOfQuestion + 1) % mQuestionBank.length;
-                String checkResult = "= " + indexOfQuestion;
-                Log.d("that is the index of : ",checkResult);
                 upDateQuestion();
             }
         });
@@ -63,5 +60,16 @@ public class MainActivity extends AppCompatActivity {
     private void upDateQuestion(){
         int questionOfTextId = mQuestionBank[indexOfQuestion].getmTextResId();
         mTextView.setText(questionOfTextId);
+    }
+
+    private void checkAnswer(boolean ans){
+        boolean ansTrue = mQuestionBank[indexOfQuestion].ismAnsTrue();
+        int massageRsId = 0;
+        if(ans == ansTrue){
+            massageRsId = R.string.correct_toast;
+        }else {
+            massageRsId = R.string.incorrect_toast;
+        }
+        Toast.makeText(this,massageRsId,Toast.LENGTH_LONG).show();
     }
 }
