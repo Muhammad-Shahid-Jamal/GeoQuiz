@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "MainActivity";
+    private static final String KEY_INDEX = "index";
     private Button mTrueBtn;
     private Button mFalseBtn;
     private TextView mTextView;
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(savedInstanceState != null){
+            indexOfQuestion = savedInstanceState.getInt(KEY_INDEX,0);
+        }
         Log.d(TAG,"onCreate() Called");
         setContentView(R.layout.activity_main);
         mTrueBtn = (Button) findViewById(R.id.btn_true);
@@ -57,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 upDateQuestion();
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle saveInstanceState){
+        super.onSaveInstanceState(saveInstanceState);
+        Log.i(TAG,"onSaveInstanceState Called");
+        //assigning int value with key value pair style and retrive in onCreate method like $_POST[] in web PHP
+        saveInstanceState.putInt(KEY_INDEX,indexOfQuestion);
     }
 
     private void upDateQuestion(){
