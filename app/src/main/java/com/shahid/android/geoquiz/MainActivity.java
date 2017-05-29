@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final String TAG = "MainActivity";
     private Button mTrueBtn;
     private Button mFalseBtn;
     private TextView mTextView;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG,"onCreate() Called");
         setContentView(R.layout.activity_main);
         mTrueBtn = (Button) findViewById(R.id.btn_true);
         mFalseBtn = (Button) findViewById(R.id.btn_false);
@@ -72,4 +74,5 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(this,massageRsId,Toast.LENGTH_LONG).show();
     }
+
 }
