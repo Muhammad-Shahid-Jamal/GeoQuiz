@@ -75,4 +75,34 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,massageRsId,Toast.LENGTH_LONG).show();
     }
 
+    //this is activity life cycle learning
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.d(TAG,"onStart() Called");
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.d(TAG,"onPause() Called");
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d(TAG,"onResume() Called");
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.d(TAG,"onStop() Called");
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG,"onDestroy() Called");
+    }
 }
