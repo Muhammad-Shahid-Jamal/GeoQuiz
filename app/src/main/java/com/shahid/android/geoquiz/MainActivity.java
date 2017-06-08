@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState != null){
             indexOfQuestion = savedInstanceState.getInt(KEY_INDEX,0);
         }
-        Log.d(TAG,"onCreate() Called");
         setContentView(R.layout.activity_main);
         mTrueBtn = (Button) findViewById(R.id.btn_true);
         mFalseBtn = (Button) findViewById(R.id.btn_false);
@@ -68,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //start a new activity
-                Intent i = new Intent(MainActivity.this,CheatActivity.class);
+                boolean mAnsIsTrue = mQuestionBank[indexOfQuestion].ismAnsTrue();
+                Intent i = CheatActivity.newIntent(MainActivity.this,mAnsIsTrue);
                 startActivity(i);
             }
         });
