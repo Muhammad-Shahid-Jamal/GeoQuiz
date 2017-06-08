@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "MainActivity";
     private static final String KEY_INDEX = "index";
+    private static final String KEY_FOR_RES = "result";
     private static final int REQUEST_CODE_CHEAT = 0;
     private Button mTrueBtn;
     private Button mFalseBtn;
@@ -37,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if(savedInstanceState != null){
             indexOfQuestion = savedInstanceState.getInt(KEY_INDEX,0);
+            this.mIsCheater = savedInstanceState.getBoolean(KEY_FOR_RES);
+        }else {
+            this.mIsCheater = false;
         }
         setContentView(R.layout.activity_main);
         mTrueBtn = (Button) findViewById(R.id.btn_true);
@@ -44,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         mNextBtn = (Button) findViewById(R.id.btn_next);
         mCheatBtn = (Button) findViewById(R.id.cht_btn);
         mTextView = (TextView) findViewById(R.id.question_text_view);
-        this.mIsCheater = false;
         this.upDateQuestion();
         mTrueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(saveInstanceState);
         //assigning int value with key value pair style and retrive in onCreate method like $_POST[] in web PHP
         saveInstanceState.putInt(KEY_INDEX,indexOfQuestion);
+        saveInstanceState.putBoolean(KEY_FOR_RES,mIsCheater);
     }
 
     private void upDateQuestion(){
