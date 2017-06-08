@@ -1,5 +1,6 @@
 package com.shahid.android.geoquiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mTrueBtn;
     private Button mFalseBtn;
     private TextView mTextView;
+    private Button mCheatBtn;
     private Button mNextBtn;
     //array of question class
     private Question[] mQuestionBank = new Question[]{
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mTrueBtn = (Button) findViewById(R.id.btn_true);
         mFalseBtn = (Button) findViewById(R.id.btn_false);
         mNextBtn = (Button) findViewById(R.id.btn_next);
+        mCheatBtn = (Button) findViewById(R.id.cht_btn);
         mTextView = (TextView) findViewById(R.id.question_text_view);
         this.upDateQuestion();
         mTrueBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,12 +64,19 @@ public class MainActivity extends AppCompatActivity {
                 upDateQuestion();
             }
         });
+        mCheatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //start a new activity
+                Intent i = new Intent(MainActivity.this,CheatActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
     protected void onSaveInstanceState(Bundle saveInstanceState){
         super.onSaveInstanceState(saveInstanceState);
-        Log.i(TAG,"onSaveInstanceState Called");
         //assigning int value with key value pair style and retrive in onCreate method like $_POST[] in web PHP
         saveInstanceState.putInt(KEY_INDEX,indexOfQuestion);
     }
@@ -88,33 +98,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //this is activity life cycle learning
-    @Override
-    protected void onStart(){
-        super.onStart();
-        Log.d(TAG,"onStart() Called");
-    }
-
-    @Override
-    protected void onPause(){
-        super.onPause();
-        Log.d(TAG,"onPause() Called");
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Log.d(TAG,"onResume() Called");
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        Log.d(TAG,"onStop() Called");
-    }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        Log.d(TAG,"onDestroy() Called");
-    }
+//    @Override
+//    protected void onStart(){
+//        super.onStart();
+//        Log.d(TAG,"onStart() Called");
+//    }
+//
+//    @Override
+//    protected void onPause(){
+//        super.onPause();
+//        Log.d(TAG,"onPause() Called");
+//    }
+//
+//    @Override
+//    protected void onResume(){
+//        super.onResume();
+//        Log.d(TAG,"onResume() Called");
+//    }
+//
+//    @Override
+//    protected void onStop(){
+//        super.onStop();
+//        Log.d(TAG,"onStop() Called");
+//    }
+//
+//    @Override
+//    protected void onDestroy(){
+//        super.onDestroy();
+//        Log.d(TAG,"onDestroy() Called");
+//    }
 }

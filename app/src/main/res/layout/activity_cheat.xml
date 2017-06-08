@@ -16,7 +16,8 @@
         android:id="@+id/ansTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="24dp"/>
+        android:padding="24dp"
+        tools:text="answer"/>
     <Button
         android:id="@+id/showAnsBtn"
         android:layout_width="wrap_content"
